@@ -1,46 +1,44 @@
-{
-    "katsuyo": [
-        {
-            "verb_conjugated_form": "未然",
-            "meaning": "使役",
-            "auxiliary_verb_conjugated_form": "未然",
-            "original": "せ",
-            "converted": "してください"
-        },
-        {
-            "verb_conjugated_form": "未然",
-            "meaning": "使役",
-            "auxiliary_verb_conjugated_form": "連用",
-            "original": "せ",
-            "converted": "してください"
-        },
-        {
-            "verb_conjugated_form": "未然",
-            "meaning": "使役",
-            "auxiliary_verb_conjugated_form": "終始",
-            "original": "せる",
-            "converted": "してください"
-        },
-        {
-            "verb_conjugated_form": "未然",
-            "meaning": "使役",
-            "auxiliary_verb_conjugated_form": "連体",
-            "original": "せる",
-            "converted": "してください"
-        },
-        {
-            "verb_conjugated_form": "未然",
-            "meaning": "使役",
-            "auxiliary_verb_conjugated_form": "仮定",
-            "original": "せれ",
-            "converted": "してください"
-        },
-        {
-            "verb_conjugated_form": "未然",
-            "meaning": "使役",
-            "auxiliary_verb_conjugated_form": "命令",
-            "original": "せれ",
-            "converted": "してください"
-        }
-    ]
-}
+[
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "未然",
+        "original": "せ",
+        "converted": "してください"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "連用",
+        "original": "せ",
+        "converted": "してください"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "終始",
+        "original": "せる",
+        "converted": "してください"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "連体",
+        "original": "せる",
+        "converted": "してください"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "仮定",
+        "original": "せれ",
+        "converted": "してください"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "命令",
+        "original": "せれ",
+        "converted": "してください"
+    }
+]
