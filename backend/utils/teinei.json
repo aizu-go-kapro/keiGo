@@ -40,5 +40,96 @@
         "auxiliary_verb_conjugated_form": "命令",
         "original": "せれ",
         "converted": "してください"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "推量",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "う",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "推量",
+        "auxiliary_verb_conjugated_form": "連体",
+        "original": "う",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "推量",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "よう",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "推量",
+        "auxiliary_verb_conjugated_form": "連体",
+        "original": "よう",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "打消推量",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "まい",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "打消推量",
+        "auxiliary_verb_conjugated_form": "連体",
+        "original": "まい",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "打消推量",
+        "auxiliary_verb_conjugated_form": "連体",
+        "original": "よう",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "未然",
+        "original": "たかろ",
+        "converted": "たかります"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "連用",
+        "original": "たかっ",
+        "converted": "たかったです"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "連用",
+        "original": "たく",
+        "converted": "たく"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "たい",
+        "converted": "たいです"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "連体",
+        "original": "たい",
+        "converted": "たいです"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "仮定",
+        "original": "たけれ",
+        "converted": "たいならば"
     }
 ]
