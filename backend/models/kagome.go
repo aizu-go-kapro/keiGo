@@ -8,10 +8,11 @@ import (
 
 type Kagome struct{}
 
-func (ur *Kagome) MorphologicalAnalysis(request KeigoRequest) KeigoResponse {
-	var response KeigoResponse
+func (ur *Kagome) MorphologicalAnalysis(body string) string {
+	// var response KeigoResponse
+	var convertedBody = ""
 	t := tokenizer.New()
-	tokens := t.Tokenize(request.Body) // t.Analyze("寿司が食べたい。", tokenizer.Normal)
+	tokens := t.Tokenize(body) // t.Analyze("寿司が食べたい。", tokenizer.Normal)
 	for _, token := range tokens {
 		if token.Class == tokenizer.DUMMY {
 			// BOS: Begin Of Sentence, EOS: End Of Sentence.
@@ -20,7 +21,7 @@ func (ur *Kagome) MorphologicalAnalysis(request KeigoRequest) KeigoResponse {
 		}
 		features := strings.Join(token.Features(), ",")
 		fmt.Printf("%s\t%v\n", token.Surface, features)
-		response.ConvertedBody += token.Surface + " "
+		convertedBody += token.Surface + " "
 	}
-	return response
+	return convertedBody
 }

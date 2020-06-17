@@ -16,7 +16,8 @@ func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
 		c.Status(http.StatusBadRequest)
 	} else {
 		kagome := new(models.Kagome)
-		response := kagome.MorphologicalAnalysis(request)
+		var response models.KeigoResponse
+		response.ConvertedBody = kagome.MorphologicalAnalysis(request.Body)
 		c.JSON(http.StatusOK, response)
 	}
 }
