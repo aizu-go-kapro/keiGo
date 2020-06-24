@@ -2,8 +2,9 @@ package models
 
 import (
 	"fmt"
-	"github.com/ikawaha/kagome/tokenizer"
 	"strings"
+
+	"github.com/ikawaha/kagome/tokenizer"
 )
 
 type (
@@ -15,6 +16,18 @@ type (
 	}
 	Keigo struct{}
 )
+
+var utoi = map[string]string{
+	"う": "い",
+	"く": "き",
+	"す": "し",
+	"つ": "ち",
+	"ぬ": "に",
+	"ふ": "ひ",
+	"む": "み",
+	"ゆ": "い",
+	"る": "り",
+}
 
 func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 	var convertedBody = ""
@@ -45,6 +58,12 @@ func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 			}
 			if token.Features()[0] == "名詞" || token.Features()[0] == "形容詞" {
 				token.Surface = token.Surface + "です"
+			}
+			if token.Features()[0] == "動詞" {
+				// 動詞の終止形 -> 動詞の連用形 + ます
+				word := []rune(token.Surface)
+				head, tail := word[0:len(word)-2], word[len(word)-1]
+				token.Surface = string(head) + utoi[string(tail)] + "ます"
 			}
 		}
 
