@@ -56,13 +56,13 @@ func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 			if token.Features()[0] == "動詞" {
 				// 動詞の終止形 -> 動詞の連用形 + ます
 				word := []rune(token.Surface)
-				head, tail := word[0:len(word)-2], word[len(word)-1]
+				head, tail := word[0:len(word)-1], word[len(word)-1]
 				token.Surface = string(head) + utoi[string(tail)] + "ます"
 			}
 			if token.Features()[0] == "助動詞" {
 				// 動詞の連用形＋助動詞＋です、ます
 				word := []rune(token.Surface)
-				head, tail := word[0:len(word)-2], word[len(word)-1]
+				head, tail := word[0:len(word)-1], word[len(word)-1]
 				_, isConverted := utoi[string(tail)]
 				if isConverted == true {
 					token.Surface = string(head) + "ます"
