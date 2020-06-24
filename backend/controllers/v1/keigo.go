@@ -12,11 +12,14 @@ func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
 	//kind := c.Query("kind")
 	//print(kind)
 	var request models.KeigoRequest
+	var response models.KeigoResponse
 	if err := c.BindJSON(&request); err != nil {
 		c.Status(http.StatusBadRequest)
 	} else {
-		kagome := new(models.Kagome)
-		response := kagome.MorphologicalAnalysis(request)
+		var kagome models.Kagome
+		tokens := kagome.MorphologicalAnalysis(request.Body)
+		var keigo models.Keigo
+		response.ConvertedBody = keigo.Convert(tokens)
 		c.JSON(http.StatusOK, response)
 	}
 }
