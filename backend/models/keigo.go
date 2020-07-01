@@ -59,7 +59,9 @@ func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 					head, tail := word[0:len(word)-1], word[len(word)-1]
 					token.Surface = string(head) + utoi[string(tail)] + "ます"
 				}
-				if token.Features()[0] == "助動詞" {
+				if token.Surface == "だ" && token.Features()[0] == "助動詞" {
+					token.Surface = "です"
+				} else if token.Features()[0] == "助動詞" {
 					// 動詞の連用形＋助動詞＋です、ます
 					word := []rune(token.Surface)
 					//過去形の "った(ex: 帰った)" と "た(ex: 伝えた)"の時
@@ -74,19 +76,15 @@ func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 						} else if tokens[i-1].Features()[0] == "動詞" {
 							token.Surface = "ました"
 						}
-					} else if tokens[i-1].Surface != "でし" && tokens[i-1].Surface != "まし" {
+					} else if !(tokens[i-1].Surface == "でし" || tokens[i-1].Surface == "まし") {
 						head, tail := word[0:len(word)-1], word[len(word)-1]
 						_, isConverted := utoi[string(tail)]
 						if isConverted == true {
 							token.Surface = string(head) + "ます"
 						} else {
-							fmt.Println("koko")
 							token.Surface = token.Surface + "です"
 						}
 					}
-				}
-				if token.Surface == "だ" && token.Features()[0] == "助動詞" {
-					token.Surface = "です"
 				}
 				if token.Features()[0] == "名詞" || token.Features()[0] == "形容詞" {
 					token.Surface = token.Surface + "です"
