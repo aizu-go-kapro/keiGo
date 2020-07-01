@@ -42,7 +42,7 @@ func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 			break
 		}
 	}
-	if teineiToken := tokens[endOfSentenceTokenIndex]; teineiToken.Surface != "です" || teineiToken.Surface != "ます" {
+	if teineiToken := tokens[endOfSentenceTokenIndex]; teineiToken.Surface != "です" && teineiToken.Surface != "ます" {
 		for i, token := range tokens {
 			if token.Class == tokenizer.DUMMY {
 				// BOS: Begin Of Sentence, EOS: End Of Sentence.
@@ -71,15 +71,16 @@ func (k *Keigo) Convert(tokens []tokenizer.Token) string {
 							doushiHead, doushiTail := basicFormDoushi[0:len(basicFormDoushi)-1], basicFormDoushi[len(basicFormDoushi)-1]
 							runeConvertedBody := []rune(convertedBody)
 							convertedBody = string(runeConvertedBody[0:len(runeConvertedBody)-2]) + string(doushiHead) + utoi[string(doushiTail)] + "まし"
-						} else {
+						} else if tokens[i-1].Features()[0] == "動詞" {
 							token.Surface = "ました"
 						}
-					} else if token.Surface == "た" {
+					} else if tokens[i-1].Surface != "でし" && tokens[i-1].Surface != "まし" {
 						head, tail := word[0:len(word)-1], word[len(word)-1]
 						_, isConverted := utoi[string(tail)]
 						if isConverted == true {
 							token.Surface = string(head) + "ます"
 						} else {
+							fmt.Println("koko")
 							token.Surface = token.Surface + "です"
 						}
 					}
