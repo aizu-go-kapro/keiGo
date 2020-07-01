@@ -7,15 +7,7 @@ import (
 	"github.com/ikawaha/kagome/tokenizer"
 )
 
-type (
-	KeigoRequest struct {
-		Body string `json:"body" binding:"required,omitempty"`
-	}
-	KeigoResponse struct {
-		ConvertedBody string `json:"converted_body" binding:"required,omitempty"`
-	}
-	Keigo struct{}
-)
+type Teinei struct{}
 
 var utoi = map[string]string{
 	"う": "い",
@@ -29,7 +21,7 @@ var utoi = map[string]string{
 	"る": "り",
 }
 
-func (k *Keigo) Convert(tokens []tokenizer.Token) string {
+func (t *Teinei) Convert(tokens []tokenizer.Token) string {
 	var convertedBody = ""
 
 	// BOSとEOSはリストに含まない

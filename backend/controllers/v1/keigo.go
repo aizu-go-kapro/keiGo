@@ -18,8 +18,8 @@ func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
 	} else {
 		var kagome models.Kagome
 		tokens := kagome.MorphologicalAnalysis(request.Body)
-		var keigo models.Keigo
-		response.ConvertedBody = keigo.Convert(tokens)
+		var teinei models.Teinei
+		response.ConvertedBody = teinei.Convert(tokens)
 		c.JSON(http.StatusOK, response)
 	}
 }
