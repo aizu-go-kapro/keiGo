@@ -1,0 +1,122 @@
+[
+    {
+        "original": "する",
+        "converted": "なさる"
+    },
+    {
+        "original": "言う",
+        "converted": "おっしゃる"
+    },
+    {
+        "original": "行く",
+        "converted": "いらっしゃる"
+    },
+    {
+        "original": "来る",
+        "converted": "いらっしゃる"
+    },
+    {
+        "original": "知る",
+        "converted": "お知りになる"
+    },
+    {
+        "original": "食べる",
+        "converted": "召し上がる"
+    },
+    {
+        "original": "いる",
+        "converted": "いらっしゃる"
+    },
+    {
+        "original": "見る",
+        "converted": "ご覧になる"
+    },
+    {
+        "original": "聞く",
+        "converted": "お聞きになる"
+    },
+    {
+        "original": "座る",
+        "converted": "お掛けになる"
+    },
+    {
+        "original": "会う",
+        "converted": "お会いになる"
+    },
+    {
+        "original": "伝える",
+        "converted": "お伝えになる"
+    },
+    {
+        "original": "わかる",
+        "converted": "ご理解いただく"
+    },
+    {
+        "original": "読む",
+        "converted": "お読みになる"
+    },
+    {
+        "original": "与える",
+        "converted": "くださる"
+    },
+    {
+        "original": "受け取る",
+        "converted": "お受け取りになる"
+    },
+    {
+        "original": "利用する",
+        "converted": "ご利用になる"
+    },
+    {
+        "original": "思う",
+        "converted": "お思いになる"
+    },
+    {
+        "original": "買う",
+        "converted": "お買いになる"
+    },
+    {
+        "original": "考える",
+        "converted": "お考えになる"
+    },
+    {
+        "original": "待つ",
+        "converted": "お待ちになる"
+    },
+    {
+        "original": "帰る",
+        "converted": "帰られる"
+    },
+    {
+        "original": "家",
+        "converted": "御宅"
+    },
+    {
+        "original": "会社",
+        "converted": "貴社"
+    },
+    {
+        "original": "店",
+        "converted": "貴店"
+    },
+    {
+        "original": "銀行",
+        "converted": "貴行"
+    },
+    {
+        "original": "学校",
+        "converted": "貴校"
+    },
+    {
+        "original": "新聞",
+        "converted": "貴紙"
+    },
+    {
+        "original": "雑誌",
+        "converted": "貴誌"
+    },
+    {
+        "original": "地位",
+        "converted": "貴職"
+    }
+]
