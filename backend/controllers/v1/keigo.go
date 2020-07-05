@@ -22,18 +22,16 @@ func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
 	if err := c.BindJSON(&request); err != nil {
 		c.Status(http.StatusBadRequest)
 	} else {
-		kagome := models.Kagome{}
-		tokens := kagome.MorphologicalAnalysis(request.Body)
 		switch kind {
 		case Teinei:
 			teinei := models.Teinei{}
-			response.ConvertedBody = teinei.Convert(tokens)
+			response.ConvertedBody = teinei.Convert(request.Body)
 		case Sonkei:
 			sonkei := models.Sonkei{}
-			response.ConvertedBody = sonkei.Convert(tokens)
+			response.ConvertedBody = sonkei.Convert(request.Body)
 		case Kenjyo:
 			kenjyo := models.Kenjyo{}
-			response.ConvertedBody = kenjyo.Convert(tokens)
+			response.ConvertedBody = kenjyo.Convert(request.Body)
 		}
 		c.JSON(http.StatusOK, response)
 	}

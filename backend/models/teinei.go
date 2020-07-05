@@ -21,11 +21,12 @@ var utoi = map[string]string{
 	"る": "り",
 }
 
-func (t *Teinei) Convert(tokens []tokenizer.Token) string {
+func (t *Teinei) Convert(body string) string {
+	kagome := Kagome{}
+	tokens := kagome.MorphologicalAnalysis(body)
+
 	var convertedBody = ""
 
-	// BOSとEOSはリストに含まない
-	tokens = tokens[1 : len(tokens)-1]
 	endOfSentenceTokenIndex := len(tokens) - 1
 	for {
 		if tokens[endOfSentenceTokenIndex].Features()[0] == "記号" {

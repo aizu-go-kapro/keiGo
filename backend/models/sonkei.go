@@ -10,14 +10,15 @@ import (
 
 type Sonkei struct{}
 
-func (s *Sonkei) Convert(tokens []tokenizer.Token) string {
+func (s *Sonkei) Convert(body string) string {
+	kagome := Kagome{}
+	tokens := kagome.MorphologicalAnalysis(body)
+
 	utils := utils.Utils{}
 	conversionRules := utils.JsonDecoder("sonkei.json")
 
 	var convertedBody = ""
 
-	// BOSとEOSはリストに含まない
-	tokens = tokens[1 : len(tokens)-1]
 	endOfSentenceTokenIndex := len(tokens) - 1
 	for {
 		if tokens[endOfSentenceTokenIndex].Features()[0] == "記号" {
