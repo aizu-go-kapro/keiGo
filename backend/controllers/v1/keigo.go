@@ -8,18 +8,31 @@ import (
 
 type KeigoController struct{}
 
+const (
+	Teinei string = "teinei"
+	Sonkei string = "sonkei"
+	Kenjyo string = "kenjyo"
+)
+
 func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
-	//kind := c.Query("kind")
-	//print(kind)
-	var request models.KeigoRequest
-	var response models.KeigoResponse
+	kind := c.Query("kind")
+	print(kind)
+	request := models.KeigoRequest{}
+	response := models.KeigoResponse{}
 	if err := c.BindJSON(&request); err != nil {
 		c.Status(http.StatusBadRequest)
 	} else {
-		var kagome models.Kagome
-		tokens := kagome.MorphologicalAnalysis(request.Body)
-		var keigo models.Keigo
-		response.ConvertedBody = keigo.Convert(tokens)
+		switch kind {
+		case Teinei:
+			teinei := models.Teinei{}
+			response.ConvertedBody = teinei.Convert(request.Body)
+		case Sonkei:
+			sonkei := models.Sonkei{}
+			response.ConvertedBody = sonkei.Convert(request.Body)
+		case Kenjyo:
+			kenjyo := models.Kenjyo{}
+			response.ConvertedBody = kenjyo.Convert(request.Body)
+		}
 		c.JSON(http.StatusOK, response)
 	}
 }
