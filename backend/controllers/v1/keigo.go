@@ -29,9 +29,11 @@ func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
 			var teinei models.Teinei
 			response.ConvertedBody = teinei.Convert(tokens)
 		case Sonkei:
-			// ToDo
+			var sonkei models.Sonkei
+			response.ConvertedBody = sonkei.Convert(tokens)
 		case Kenjyo:
-			// ToDo
+			var kenjyo models.Kenjyo
+			response.ConvertedBody = kenjyo.Convert(tokens)
 		}
 		c.JSON(http.StatusOK, response)
 	}
