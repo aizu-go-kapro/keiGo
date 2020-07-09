@@ -19,6 +19,7 @@ var utoi = map[string]string{
 	"む": "み",
 	"ゆ": "い",
 	"る": "り",
+	"ぶ": "び",
 }
 
 func (t *Teinei) Convert(body string) string {
