@@ -31,3 +31,10 @@ Response:
   "converted_body": "私は寿司が食べたいです。"
 }
 ```
+
+**Test convert logic**
+
+Testing the `keigo/models` package.
+```
+go test keigo/models -v -cover
+```
