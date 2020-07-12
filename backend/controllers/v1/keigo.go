@@ -1,38 +1,57 @@
 package v1
 
 import (
-	"github.com/gin-gonic/gin"
-	"keigo/models"
 	"net/http"
-)
 
-type KeigoController struct{}
+	"github.com/aizu-go-kapro/keiGo/backend/models"
+	"github.com/gin-gonic/gin"
+)
 
 const (
-	Teinei string = "teinei"
-	Sonkei string = "sonkei"
-	Kenjyo string = "kenjyo"
+	teineiKind = "teinei"
+	sonkeiKind = "sonkei"
+	kenjyoKind = "kenjyo"
 )
+// Keigo is controller of keigo
+type Keigo struct {
+	teinei models.Teinei
+	sonkei models.Sonkei
+	kenjyo models.Kenjyo
+}
 
-func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
+// NewKeigo create keigo controller
+func NewKeigo() *Keigo {
+	return &Keigo{}
+}
+
+// ConvertKeigo is controller
+func (kc *Keigo) ConvertKeigo(c *gin.Context) {
+	var (
+		request  models.KeigoRequest
+		response models.KeigoResponse
+	)
+
 	kind := c.Query("kind")
-	print(kind)
-	request := models.KeigoRequest{}
-	response := models.KeigoResponse{}
-	if err := c.BindJSON(&request); err != nil {
-		c.Status(http.StatusBadRequest)
-	} else {
-		switch kind {
-		case Teinei:
-			teinei := models.Teinei{}
-			response.ConvertedBody = teinei.Convert(request.Body)
-		case Sonkei:
-			sonkei := models.Sonkei{}
-			response.ConvertedBody = sonkei.Convert(request.Body)
-		case Kenjyo:
-			kenjyo := models.Kenjyo{}
-			response.ConvertedBody = kenjyo.Convert(request.Body)
-		}
-		c.JSON(http.StatusOK, response)
+	if kind == "" {
+		return c.JSON(
+			http.StatusBadRequest, 
+			map[string]string{"status": "error", "message": "kind is empty"}
+			// '{"status": "error", "message": "kind is empty"}'
+		)
 	}
+	
+	if err := c.BindJSON(&request); err != nil {
+		return c.Status(http.StatusBadRequest)
+	}
+
+	switch kind {
+	case teineiKind:
+		response.ConvertedBody = kc.teinei.Convert(request.Body)
+	case sonkeiKind:
+		response.ConvertedBody = kc.sonkei.Convert(request.Body)
+	case kenjyoKind:
+		response.ConvertedBody = kc.kenjyo.Convert(request.Body)
+	}
+
+	return c.JSON(http.StatusOK, response)
 }

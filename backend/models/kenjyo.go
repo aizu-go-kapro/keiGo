@@ -2,20 +2,27 @@ package models
 
 import (
 	"fmt"
-	"keigo/utils"
 	"strings"
+
+	"github.com/aizu-go-kapro/keiGo/backend/utils"
 
 	"github.com/ikawaha/kagome/tokenizer"
 )
 
-type Kenjyo struct{}
+type Kenjyo struct{
+	Utils: utils,
+}
 
-func (k *Kenjyo) Convert(body string) string {
+
+func (k *Kenjyo) Convert(body string) (string, error) {
 	kagome := Kagome{}
 	tokens := kagome.MorphologicalAnalysis(body)
 
 	utils := utils.Utils{}
-	conversionRules := utils.JsonDecoder("kenjyo.json")
+	conversionRules, err := utils.JsonDecoder("kenjyo.json")
+	if err != nil {
+		return "", err
+	}
 
 	var convertedBody = ""
 
@@ -23,9 +30,8 @@ func (k *Kenjyo) Convert(body string) string {
 	for {
 		if tokens[endOfSentenceTokenIndex].Features()[0] == "記号" {
 			endOfSentenceTokenIndex--
-		} else {
-			break
-		}
+		} 
+		break
 	}
 
 	for _, token := range tokens {

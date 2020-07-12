@@ -2,8 +2,9 @@ package models
 
 import (
 	"fmt"
-	"keigo/utils"
 	"strings"
+
+	"github.com/aizu-go-kapro/keiGo/backend/utils"
 
 	"github.com/ikawaha/kagome/tokenizer"
 )
@@ -14,9 +15,7 @@ func (s *Sonkei) Convert(body string) string {
 	kagome := Kagome{}
 	tokens := kagome.MorphologicalAnalysis(body)
 
-	utils := utils.Utils{}
 	conversionRules := utils.JsonDecoder("sonkei.json")
-
 	var convertedBody = ""
 
 	endOfSentenceTokenIndex := len(tokens) - 1
