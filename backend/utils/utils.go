@@ -1,13 +1,14 @@
-package utils
+package converter
 
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 )
 
 type (
-	Utils struct{}
+	Utils struct {
+		Path string // json ファイルのパス
+	}
 
 	ConversionRule struct {
 		Original  string `json:"original"`
@@ -15,19 +16,20 @@ type (
 	}
 )
 
-func (u *Utils) JsonDecoder(filename string) []ConversionRule {
+func (u *Utils) JsonDecoder(filename string) ([]ConversionRule, error) {
 	// File openは実行時パスから見た相対パスになる
 	bytes, err := ioutil.ReadFile("./utils/" + filename)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
+
 	// JSONデコード
 	var conversionRules []ConversionRule
 	if err := json.Unmarshal(bytes, &conversionRules); err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
-	return conversionRules
+	return conversionRules, nil
 }
 
 func (u *Utils) FindConvertedFromConversionRule(conversionRules []ConversionRule, original string) string {
