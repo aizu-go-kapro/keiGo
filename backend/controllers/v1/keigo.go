@@ -1,9 +1,10 @@
 package v1
 
 import (
-	"github.com/gin-gonic/gin"
-	"keigo/models"
 	"net/http"
+
+	"github.com/aizu-go-kapro/keiGo/backend/models"
+	"github.com/gin-gonic/gin"
 )
 
 type KeigoController struct{}

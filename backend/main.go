@@ -1,8 +1,8 @@
 package main
 
 import (
+	controllers "github.com/aizu-go-kapro/keiGo/backend/controllers/v1"
 	"github.com/gin-gonic/gin"
-	controllers "keigo/controllers/v1"
 )
 
 func main() {
