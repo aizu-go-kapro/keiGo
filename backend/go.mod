@@ -1,4 +1,4 @@
-module keigo
+module github.com/aizu-go-kapro/keiGo/backend
 
 go 1.13
 

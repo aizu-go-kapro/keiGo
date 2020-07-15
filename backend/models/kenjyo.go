@@ -2,9 +2,9 @@ package models
 
 import (
 	"fmt"
-	"keigo/utils"
 	"strings"
 
+	"github.com/aizu-go-kapro/keiGo/backend/utils"
 	"github.com/ikawaha/kagome/tokenizer"
 )
 
