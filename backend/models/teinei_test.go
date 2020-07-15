@@ -32,6 +32,22 @@ func TestConvert(t *testing.T) {
 		t.Logf("convertedBody: %s", actualConvertedBody)
 	})
 
+	t.Run("文末が「動詞の終止形/サ変」のときは「動詞の連用形+ます」に変換されること", func(t *testing.T) {
+		var body string = "いったん気絶する。"
+		var convertedBody string = "いったん気絶します。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
+	t.Run("文末が「動詞の終止形/カ変」のときは「動詞の連用形+ます」に変換されること", func(t *testing.T) {
+		var body string = "外に来る。"
+		var convertedBody string = "外に来ます。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
 	t.Run("文末が「助動詞の断定のだ」のときは「だ→です」に変換されること", func(t *testing.T) {
 		var body string = "私は寿司だ。"
 		var convertedBody string = "私は寿司です。"
@@ -56,9 +72,33 @@ func TestConvert(t *testing.T) {
 		t.Logf("convertedBody: %s", actualConvertedBody)
 	})
 
+	t.Run("文末が「動詞の連用ウ接続+助動詞の推量/意志のう」のときは「動詞の連用形+ましょう」に変換されること", func(t *testing.T) {
+		var body string = "本を読もう。"
+		var convertedBody string = "本を読みましょう。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
 	t.Run("文末が「名詞/形容詞詞」のときは「文末+です」に変換されること", func(t *testing.T) {
 		var body string = "私は寿司。"
 		var convertedBody string = "私は寿司です。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
+	t.Run("文末が「動詞+ない」のときは「動詞の連用形+ません」に変換されること", func(t *testing.T) {
+		var body string = "私は学ばない。"
+		var convertedBody string = "私は学ばないです。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
+	t.Run("文末が「動詞以外+ない」のときは「ない+です」に変換されること", func(t *testing.T) {
+		var body string = "それじゃない。"
+		var convertedBody string = "それじゃないです。"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
 		t.Logf("convertedBody: %s", actualConvertedBody)
@@ -73,7 +113,7 @@ func TestConvert(t *testing.T) {
 	})
 
 	t.Run("kagomeの辞書に存在しない語が含まれていても動作すること", func(t *testing.T) {
-		var body string = "隣で酔っててワロタ。"
+		var body string = "隣で酔っててワロタ。"
 		var convertedBody string = "隣で酔っててワロタ。"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
