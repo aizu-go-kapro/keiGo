@@ -1,7 +1,9 @@
 package models
 
-import "testing"
-import "github.com/stretchr/testify/assert"
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
 
 func TestConvert(t *testing.T) {
 	teinei := Teinei{}
@@ -39,7 +41,7 @@ func TestConvert(t *testing.T) {
 
 	t.Run("文末が「動詞の連用タ接続+助動詞の完了/過去/存続のた」のときは「動詞の連用形+まし+た」に変換されること", func(t *testing.T) {
 		var body string = "私は家に着いた。"
-		var convertedBody string = "私は家に着きました"
+		var convertedBody string = "私は家に着きました。"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
 		t.Logf("convertedBody: %s", actualConvertedBody)
@@ -47,7 +49,7 @@ func TestConvert(t *testing.T) {
 
 	t.Run("文末が「動詞の連用タ接続(促音便形)+助動詞の完了/過去/存続のた」のときは「動詞の連用形+まし+た」に変換されること", func(t *testing.T) {
 		var body string = "私は家に帰った。"
-		var convertedBody string = "私は家に帰りました"
+		var convertedBody string = "私は家に帰りました。"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
 		t.Logf("convertedBody: %s", actualConvertedBody)
