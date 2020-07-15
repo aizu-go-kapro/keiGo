@@ -55,6 +55,17 @@ func convertRenyo(feat Feature) (string, error) {
 		verb := []rune(feat.base)
 		return string(verb[0 : len(verb)-1]), nil
 	}
+	if string(variant[0:2]) == "カ変" {
+		verb := []rune(feat.base)
+		ki := verb[0]
+		if string(ki) == "来" {
+			return string(ki), nil
+		}
+		return "き", nil
+	}
+	if string(variant[0:2]) == "サ変" {
+		return "し", nil
+	}
 
 	return feat.base, nil
 }
