@@ -1,8 +1,9 @@
 package models
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestConvert(t *testing.T) {
@@ -58,6 +59,22 @@ func TestConvert(t *testing.T) {
 	t.Run("文末が「名詞/形容詞詞」のときは「文末+です」に変換されること", func(t *testing.T) {
 		var body string = "私は寿司。"
 		var convertedBody string = "私は寿司です。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
+	t.Run("文末が「助詞」のときは「その1つ前を文末として」変換されること", func(t *testing.T) {
+		var body string = "あっちに行こうよ。"
+		var convertedBody string = "あっちに行きましょうよ。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
+	t.Run("kagomeの辞書に存在しない語が含まれていても動作すること", func(t *testing.T) {
+		var body string = "隣で酔っててワロタ。"
+		var convertedBody string = "隣で酔っててワロタ。"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
 		t.Logf("convertedBody: %s", actualConvertedBody)
