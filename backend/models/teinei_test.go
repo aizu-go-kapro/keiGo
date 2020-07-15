@@ -90,7 +90,7 @@ func TestConvert(t *testing.T) {
 
 	t.Run("文末が「動詞+ない」のときは「動詞の連用形+ません」に変換されること", func(t *testing.T) {
 		var body string = "私は学ばない。"
-		var convertedBody string = "私は学ばないです。"
+		var convertedBody string = "私は学びません。"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
 		t.Logf("convertedBody: %s", actualConvertedBody)
@@ -107,6 +107,14 @@ func TestConvert(t *testing.T) {
 	t.Run("文末が「助詞」のときは「その1つ前を文末として」変換されること", func(t *testing.T) {
 		var body string = "あっちに行こうよ。"
 		var convertedBody string = "あっちに行きましょうよ。"
+		actualConvertedBody := teinei.Convert(body)
+		assert.Equal(t, convertedBody, actualConvertedBody)
+		t.Logf("convertedBody: %s", actualConvertedBody)
+	})
+
+	t.Run("文末が「記号」でないときも動作すること", func(t *testing.T) {
+		var body string = "私は寿司が食べたいです"
+		var convertedBody string = "私は寿司が食べたいです"
 		actualConvertedBody := teinei.Convert(body)
 		assert.Equal(t, convertedBody, actualConvertedBody)
 		t.Logf("convertedBody: %s", actualConvertedBody)
