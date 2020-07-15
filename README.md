@@ -34,7 +34,7 @@ Response:
 
 **Test convert logic**
 
-Testing the `keigo/models` package.
+Testing the `github.com/aizu-go-kapro/keiGo/backend/models` package.
 ```
-go test keigo/models -v -cover
+go test github.com/aizu-go-kapro/keiGo/backend/models -v -cover
 ```
