@@ -84,6 +84,9 @@ func (t *Teinei) Convert(body string) string {
 		fmt.Printf("%s\t%v\n", token.Surface, strings.Join(token.Features(), ","))
 
 		f := token.Features()
+		if len(f) < 9 {
+			f = append(f, make([]string, 9-len(f))...)
+		}
 		fs := Feature{surface: token.Surface, part: f[0], class: f[1:4], variant: f[4], conjugated: f[5], base: f[6], reading: f[7], pronunciation: f[8]}
 
 		// 例外処理　あろ+う == ある
