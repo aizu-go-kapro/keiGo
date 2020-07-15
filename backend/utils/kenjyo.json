@@ -1,2 +1,122 @@
 [
+    {
+        "original": "する",
+        "converted": "いたす"
+    },
+    {
+        "original": "言う",
+        "converted": "申す"
+    },
+    {
+        "original": "行く",
+        "converted": "伺う"
+    },
+    {
+        "original": "来る",
+        "converted": "参る"
+    },
+    {
+        "original": "知る",
+        "converted": "存じ上げる"
+    },
+    {
+        "original": "食べる",
+        "converted": "いただく"
+    },
+    {
+        "original": "いる",
+        "converted": "おる"
+    },
+    {
+        "original": "見る",
+        "converted": "拝見する"
+    },
+    {
+        "original": "聞く",
+        "converted": "拝聴する"
+    },
+    {
+        "original": "座る",
+        "converted": "お座りする"
+    },
+    {
+        "original": "会う",
+        "converted": "お目にかかる"
+    },
+    {
+        "original": "伝える",
+        "converted": "申し伝える"
+    },
+    {
+        "original": "わかる",
+        "converted": "かしこまる"
+    },
+    {
+        "original": "読む",
+        "converted": "拝読する"
+    },
+    {
+        "original": "与える",
+        "converted": "差し上げる"
+    },
+    {
+        "original": "受け取る",
+        "converted": "頂戴する"
+    },
+    {
+        "original": "利用する",
+        "converted": "利用させていただく"
+    },
+    {
+        "original": "思う",
+        "converted": "存じる"
+    },
+    {
+        "original": "買う",
+        "converted": "買わせていただく"
+    },
+    {
+        "original": "考える",
+        "converted": "検討いたします"
+    },
+    {
+        "original": "待つ",
+        "converted": "お待ちする"
+    },
+    {
+        "original": "帰る",
+        "converted": "おいとまする"
+    },
+    {
+        "original": "家",
+        "converted": "拙宅"
+    },
+    {
+        "original": "会社",
+        "converted": "弊社"
+    },
+    {
+        "original": "店",
+        "converted": "弊店"
+    },
+    {
+        "original": "銀行",
+        "converted": "弊行"
+    },
+    {
+        "original": "学校",
+        "converted": "弊校"
+    },
+    {
+        "original": "新聞",
+        "converted": "弊紙"
+    },
+    {
+        "original": "雑誌",
+        "converted": "弊誌"
+    },
+    {
+        "original": "地位",
+        "converted": "小職"
+    }
 ]
