@@ -66,7 +66,7 @@ func (t *Teinei) Convert(body string) string {
 
 	endIndex := len(tokens) - 1
 	for {
-		if tokens[endIndex].Features()[0] == "記号" {
+		if tokens[endIndex].Features()[0] == "記号" || tokens[endIndex].Features()[0] == "助詞" {
 			endIndex--
 		} else {
 			break
