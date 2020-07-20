@@ -17,7 +17,7 @@ Request: GET /keigo
 
 ```
 curl --request GET \
-  --url 'http://localhost:3000/api/v1/keigo?kind=teinei' \
+  --url 'http://localhost:8080/api/v1/keigo?kind=teinei' \
   --header 'content-type: application/json' \
   --data '{
   "body": "私は寿司が食べたい。"

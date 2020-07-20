@@ -12,5 +12,5 @@ RUN go build -o /keigo_server
 # production stage
 FROM alpine:latest as production-stage
 COPY --from=build-stage /keigo_server .
-EXPOSE 3000
+EXPOSE 8080
 ENTRYPOINT ["./keigo_server"]

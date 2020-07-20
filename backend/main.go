@@ -12,5 +12,5 @@ func main() {
 		kc := new(controllers.KeigoController)
 		api.GET("/keigo", kc.ConvertKeigo)
 	}
-	router.Run(":3000")
+	router.Run(":8080")
 }
