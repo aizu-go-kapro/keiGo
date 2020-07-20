@@ -1,0 +1,48 @@
+name: Deploy
+
+on: 
+  push:
+    branches:
+      - master
+
+env:
+  SERVICE_NAME: keigo
+  PORT: 3000
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION: ${{ secrets.GCP_REGION }}
+  GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+  IMAGE: asia.gcr.io/$GCP_PROJECT_ID/$SERVICE_NAME:${{ github.sha }}
+
+jobs:
+  deploy-to-cloud-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Setup gcloud
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: 'latest'
+          project_id: $GCP_PROJECT_ID
+          service_account_key: $GCP_SA_KEY
+          export_default_credentials: true
+
+      - name: Configure docker to use the gcloud cli
+        run: gcloud auth configure-docker --quiet
+
+      - name: Build a docker image
+        run: docker build -t $IMAGE ./backend
+
+      - name: Push the docker image to Container Registry
+        run: docker push $IMAGE
+
+      - name: Deploy to Cloud Run
+        run: |
+            gcloud run deploy $SERVICE_NAME \
+              --image $IMAGE \
+              --port $PORT \
+              --project $GCP_PROJECT_ID \
+              --region $GCP_REGION \
+              --platform managed \
+              --quiet

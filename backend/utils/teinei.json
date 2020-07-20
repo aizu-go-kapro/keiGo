@@ -1,0 +1,121 @@
+[
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "受身",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "れる",
+        "converted": "れます"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "受身",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "られる",
+        "converted": "られます"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "せる",
+        "converted": "せます"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "使役",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "させる",
+        "converted": "させます"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "打消",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "ない",
+        "converted": "ないです"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "推量",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "う",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "推量",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "よう",
+        "converted": "でしょう"
+    },
+    {
+        "verb_conjugated_form": "未然",
+        "meaning": "打消推量",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "まい",
+        "converted": "まいでしょう"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "たい",
+        "converted": "たいです"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "希望",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "たがる",
+        "converted": "たがります"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "様態",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "そうだ",
+        "converted": "そうです"
+    },
+    {
+        "verb_conjugated_form": "連用",
+        "meaning": "ぞんざい",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "やがる",
+        "converted": "やがります"
+    },
+    {
+        "verb_conjugated_form": "終止",
+        "meaning": "伝聞",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "そうだ",
+        "converted": "そうです"
+    },
+    {
+        "verb_conjugated_form": "終止",
+        "meaning": "推定",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "らしい",
+        "converted": "らしいです"
+    },
+    {
+        "verb_conjugated_form": "終止",
+        "meaning": "当然",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "べきだ",
+        "converted": "べきです"
+    },
+    {
+        "verb_conjugated_form": "連体",
+        "meaning": "比況",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "ようだ",
+        "converted": "ようです"
+    },
+    {
+        "verb_conjugated_form": "体言助詞",
+        "meaning": "断定",
+        "auxiliary_verb_conjugated_form": "終止",
+        "original": "だ",
+        "converted": "です"
+    }
+]
