@@ -118,5 +118,25 @@
     {
         "original": "地位",
         "converted": "貴職"
+    },
+    {
+        "original": "訪ねてくる",
+        "converted": "いらっしゃる"
+    },
+    {
+        "original": "確認する",
+        "converted": "改める"
+    },
+    {
+        "original": "気に入る",
+        "converted": "お気に召す"
+    },
+    {
+        "original": "死ぬ",
+        "converted": "お亡くなりになる"
+    },
+    {
+        "original": "着る",
+        "converted": "召す"
     }
 ]

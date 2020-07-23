@@ -118,5 +118,13 @@
     {
         "original": "地位",
         "converted": "小職"
+    },
+    {
+        "original": "訪ねてくる",
+        "converted": "伺う"
+    },
+    {
+        "original": "死ぬ",
+        "converted": "亡くなる"
     }
 ]
