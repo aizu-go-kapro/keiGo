@@ -126,5 +126,17 @@
     {
         "original": "死ぬ",
         "converted": "亡くなる"
+    },
+    {
+        "original": "借りる",
+        "converted": "拝借する"
+    },
+    {
+        "original": "承諾する",
+        "converted": "かしこまる"
+    },
+    {
+        "original": "呼び出して",
+        "converted": "お呼び立ていたしまして"
     }
 ]

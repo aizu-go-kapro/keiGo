@@ -132,11 +132,19 @@
         "converted": "お気に召す"
     },
     {
+        "original": "借りる",
+        "converted": "借りられる"
+    },
+    {
         "original": "死ぬ",
         "converted": "お亡くなりになる"
     },
     {
         "original": "着る",
         "converted": "召す"
+    },
+    {
+        "original": "命じる",
+        "converted": "命じられる"
     }
 ]
