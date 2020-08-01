@@ -6,12 +6,11 @@ on:
       - master
 
 env:
-  SERVICE_NAME: keigo
-  PORT: 3000
+  SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
+  PORT: ${{ secrets.PORT }}
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GCP_REGION: ${{ secrets.GCP_REGION }}
-  GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-  IMAGE: asia.gcr.io/$GCP_PROJECT_ID/$SERVICE_NAME:${{ github.sha }}
+  IMAGE: asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.SERVICE_NAME }}:${{ github.sha }}
 
 jobs:
   deploy-to-cloud-run:
@@ -24,8 +23,8 @@ jobs:
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
           version: 'latest'
-          project_id: $GCP_PROJECT_ID
-          service_account_key: $GCP_SA_KEY
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
       - name: Configure docker to use the gcloud cli
@@ -44,5 +43,6 @@ jobs:
               --port $PORT \
               --project $GCP_PROJECT_ID \
               --region $GCP_REGION \
-              --platform managed \
+              --platform=managed \
+              --allow-unauthenticated \
               --quiet

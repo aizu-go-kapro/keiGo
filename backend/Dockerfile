@@ -11,6 +11,6 @@ RUN go build -o /keigo_server
 
 # production stage
 FROM alpine:latest as production-stage
+RUN apk add --no-cache ca-certificates
 COPY --from=build-stage /keigo_server .
-EXPOSE 3000
 ENTRYPOINT ["./keigo_server"]
