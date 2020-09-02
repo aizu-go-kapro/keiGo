@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/aizu-go-kapro/keiGo/backend/models"
@@ -10,9 +11,9 @@ import (
 type KeigoController struct{}
 
 const (
-	Teinei string = "teinei"
-	Sonkei string = "sonkei"
-	Kenjyo string = "kenjyo"
+	Teinei = "teinei"
+	Sonkei = "sonkei"
+	Kenjyo = "kenjyo"
 )
 
 func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
@@ -26,7 +27,11 @@ func (kc *KeigoController) ConvertKeigo(c *gin.Context) {
 		switch kind {
 		case Teinei:
 			teinei := models.Teinei{}
-			response.ConvertedBody = teinei.Convert(request.Body)
+			cb, err := teinei.Convert(request.Body)
+			if err != nil {
+				log.Fatal("Convert Error!", err)
+			}
+			response.ConvertedBody = cb
 		case Sonkei:
 			sonkei := models.Sonkei{}
 			response.ConvertedBody = sonkei.Convert(request.Body)
