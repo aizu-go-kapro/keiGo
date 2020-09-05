@@ -1,13 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Hello from './components/Hello';
+import TranslateBox from './components/TranslateBox';
 
 class App extends React.Component {
     render() {
         return (
-            <div>
-                <Hello />
-            </div>
+            <>
+                <header>header</header>
+                <main>
+                    <TranslateBox />
+                </main>
+            </>
         );
     }
 }
