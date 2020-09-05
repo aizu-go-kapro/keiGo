@@ -6,7 +6,7 @@ class App extends React.Component {
     render() {
         return (
             <>
-                <header>header</header>
+                <header>keiGo</header>
                 <main>
                     <TranslateBox />
                 </main>
