@@ -19,7 +19,7 @@ func main() {
 	api := router.Group("/api/v1")
 	{
 		kc := new(controllers.KeigoController)
-		api.GET("/keigo", kc.ConvertKeigo)
+		api.POST("/keigo", kc.ConvertKeigo)
 	}
 	router.Run(":" + port)
 }

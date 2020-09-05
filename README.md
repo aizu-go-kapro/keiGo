@@ -13,10 +13,10 @@ go run main.go
 
 **Example API call**
 
-Request: GET /keigo
+Request: POST /keigo
 
 ```
-curl --request GET \
+curl --request POST \
   --url 'http://localhost:3000/api/v1/keigo?kind=teinei' \
   --header 'content-type: application/json' \
   --data '{
