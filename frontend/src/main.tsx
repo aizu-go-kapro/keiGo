@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import Header from './components/Header';
 import TranslateBox from './components/TranslateBox';
 
 class App extends React.Component {
     render() {
         return (
             <>
-                <header>keiGo</header>
+                <Header>keiGo</Header>
                 <main>
                     <TranslateBox />
                 </main>
