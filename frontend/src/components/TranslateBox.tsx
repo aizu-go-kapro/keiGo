@@ -21,7 +21,6 @@ export default class TranslateBox extends React.Component<{}, IState> {
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleRadioChange(event) {
