@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/ikawaha/kagome/tokenizer"
-	"github.com/labstack/gommon/log"
 )
 
+// Teinei struct
 type Teinei struct{}
 
 // Feature is type of token.Feature
@@ -71,7 +71,7 @@ func convertRenyo(feat Feature) (string, error) {
 }
 
 // Convert is the function convert to teinei-go
-func (t *Teinei) Convert(body string) string {
+func (t *Teinei) Convert(body string) (string, error) {
 	kagome := Kagome{}
 	tokens := kagome.MorphologicalAnalysis(body)
 
@@ -113,7 +113,7 @@ func (t *Teinei) Convert(body string) string {
 	// すでに敬語の場合
 	for _, fs := range features {
 		if fs.base == "です" || fs.base == "ます" {
-			return strings.Join(surfaces, "")
+			return strings.Join(surfaces, ""), nil
 		}
 	}
 
@@ -121,16 +121,15 @@ func (t *Teinei) Convert(body string) string {
 	if features[endIndex].part == "動詞" {
 		verb, err := convertRenyo(features[endIndex])
 		if err != nil {
-			// TODO 握り潰さない
-			log.Error(err)
+			return "", err
 		}
 		surfaces[endIndex] = string(verb) + "ます"
-		return strings.Join(surfaces, "")
+		return strings.Join(surfaces, ""), nil
 	}
 
 	if features[endIndex].part == "名詞" {
 		surfaces[endIndex] = surfaces[endIndex] + "です"
-		return strings.Join(surfaces, "")
+		return strings.Join(surfaces, ""), nil
 	}
 
 	// 助動詞の「だ」が文中にある
@@ -146,7 +145,7 @@ func (t *Teinei) Convert(body string) string {
 			} else {
 				surfaces[i] = "です"
 			}
-			return strings.Join(surfaces, "")
+			return strings.Join(surfaces, ""), nil
 		}
 	}
 
@@ -155,42 +154,39 @@ func (t *Teinei) Convert(body string) string {
 		if features[endIndex-1].part == "動詞" {
 			verb, err := convertRenyo(features[endIndex-1])
 			if err != nil {
-				// TODO 握り潰さない
-				log.Error(err)
+				return "", err
 			}
 			surfaces[endIndex-1] = string(verb)
 			surfaces[endIndex] = "ません"
-			return strings.Join(surfaces, "")
+			return strings.Join(surfaces, ""), nil
 		}
 		surfaces[endIndex] = surfaces[endIndex] + "です"
-		return strings.Join(surfaces, "")
+		return strings.Join(surfaces, ""), nil
 	}
 
 	// 文末が「た」で一つ前が動詞
 	if features[endIndex].base == "た" && features[endIndex-1].part == "動詞" {
 		verb, err := convertRenyo(features[endIndex-1])
 		if err != nil {
-			// TODO 握り潰さない
-			log.Error(err)
+			return "", err
 		}
 		surfaces[endIndex-1] = string(verb)
 		surfaces[endIndex] = "ました"
-		return strings.Join(surfaces, "")
+		return strings.Join(surfaces, ""), nil
 	}
 
 	// 文末が「う」で一つ前が動詞
 	if features[endIndex].base == "う" && features[endIndex-1].part == "動詞" {
 		verb, err := convertRenyo(features[endIndex-1])
 		if err != nil {
-			// TODO 握り潰さない
-			log.Error(err)
+			return "", err
 		}
 		surfaces[endIndex-1] = string(verb)
 		surfaces[endIndex] = "ましょう"
-		return strings.Join(surfaces, "")
+		return strings.Join(surfaces, ""), nil
 	}
 
 	// それ以外（文末は助動詞の終止形なはず）
 	surfaces[endIndex] = surfaces[endIndex] + "です"
-	return strings.Join(surfaces, "")
+	return strings.Join(surfaces, ""), nil
 }
