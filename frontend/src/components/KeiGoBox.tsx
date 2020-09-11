@@ -3,11 +3,11 @@ import { useState, ChangeEvent, KeyboardEvent } from "react";
 import styled from "styled-components";
 import Color from "../const/Color";
 import { media } from "../utils/ResponsiveHelper";
-import { postTranslate } from "../utils/FetchAPI"; 
+import { postKeiGo } from "../utils/FetchAPI"; 
 
 type Kind = "teinei" | "sonkei" | "kenjyo";
 
-const TranslateBox: React.SFC<{}> = props => {
+const KeiGoBox: React.SFC<{}> = props => {
   const [kind, setKind] = useState<Kind>("teinei");
   const [body, setBody] = useState<string>("");
   const [convertedBody, setConvertedBody] = useState<string>("");
@@ -16,7 +16,7 @@ const TranslateBox: React.SFC<{}> = props => {
     const kind = event.target.id as Kind;
     setKind(kind);
     console.log(kind);
-    const res = await postTranslate(kind, body);
+    const res = await postKeiGo(kind, body);
     setConvertedBody(res.converted_body);
   };
 
@@ -26,22 +26,22 @@ const TranslateBox: React.SFC<{}> = props => {
 
   const handleKeyPress = async (event: KeyboardEvent<HTMLInputElement>) => {
     if(event.key === "Enter"){
-      const res = await postTranslate(kind, body);
+      const res = await postKeiGo(kind, body);
       setConvertedBody(res.converted_body);
     }
   };
 
   return (
     <Wrapper>
-      <TranslateBar>
-        <TranslateBarLeft>
+      <TopBar>
+        <TopBarLeft>
           <LangBox>
             <label>
               原文
             </label>
           </LangBox>
-        </TranslateBarLeft>
-        <TranslateBarRight>
+        </TopBarLeft>
+        <TopBarRight>
           <LangBoxRadioButton>
             <input type="radio" name="敬語" value="1" id="teinei" defaultChecked onChange={handleRadioChange} />
             <label htmlFor="teinei">丁寧</label>
@@ -54,8 +54,8 @@ const TranslateBox: React.SFC<{}> = props => {
             <input type="radio" name="敬語" value="3" id="kenjyo" onChange={handleRadioChange} />
             <label htmlFor="kenjyo">謙譲</label>
           </LangBoxRadioButton>
-        </TranslateBarRight>
-      </TranslateBar>
+        </TopBarRight>
+      </TopBar>
       <TextBox>
         <input type="text" placeholder="テキストを入力してください" value={body} onChange={handleChange} onKeyPress={handleKeyPress} />
       </TextBox>
@@ -77,7 +77,7 @@ const Wrapper = styled.div`
   `}
 `;
 
-const TranslateBar = styled.div`
+const TopBar = styled.div`
   display: flex;
   width: 100%;
   height: 48px;
@@ -87,13 +87,13 @@ const TranslateBar = styled.div`
   border-right: 1px solid ${Color.BORDER};
 `;
 
-const TranslateBarLeft = styled.div`
+const TopBarLeft = styled.div`
   display: flex;
   width: 50%;
   height: 100%;
 `;
 
-const TranslateBarRight = styled.div`
+const TopBarRight = styled.div`
   display: flex;
   width: 50%;
   height: 100%;
@@ -158,4 +158,4 @@ const TextBox = styled.div`
   `}
 `;
 
-export default TranslateBox;
+export default KeiGoBox;
