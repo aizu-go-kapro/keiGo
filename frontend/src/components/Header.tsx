@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Color from '../const/Color';
-import { media } from '../utils/Helper';
+import { media } from '../utils/ResponsiveHelper';
 
 type Props = {}
 

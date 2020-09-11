@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, ChangeEvent, KeyboardEvent } from "react";
 import styled from "styled-components";
 import Color from "../const/Color";
-import { media } from "../utils/Helper";
+import { media } from "../utils/ResponsiveHelper";
 import { postTranslate } from "../utils/FetchAPI"; 
 
 type Kind = "teinei" | "sonkei" | "kenjyo";
