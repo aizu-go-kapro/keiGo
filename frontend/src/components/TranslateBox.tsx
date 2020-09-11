@@ -1,104 +1,69 @@
 import * as React from "react";
+import { useState, ChangeEvent, KeyboardEvent } from "react";
 import styled from "styled-components";
 import Color from "../const/Color";
 import { media } from "../utils/Helper";
+import { postTranslate } from "../utils/FetchAPI"; 
 
-interface IState {
-  kind: "teinei" | "sonkei" | "kenjyo"
-  body: string;
-  convertedBody: string;
-}
+type Kind = "teinei" | "sonkei" | "kenjyo";
 
-export default class TranslateBox extends React.Component<{}, IState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      kind: "teinei",
-      body: "",
-      convertedBody: ""
-    };
+const TranslateBox: React.SFC<{}> = props => {
+  const [kind, setKind] = useState<Kind>("teinei");
+  const [body, setBody] = useState<string>("");
+  const [convertedBody, setConvertedBody] = useState<string>("");
 
-    this.handleRadioChange = this.handleRadioChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
+  const handleRadioChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const kind = event.target.id as Kind;
+    setKind(kind);
+    console.log(kind);
+    const res = await postTranslate(kind, body);
+    setConvertedBody(res.converted_body);
+  };
 
-  handleRadioChange(event) {
-    this.setState({kind: event.target.id});
-    console.log(event.target.id);
-    this.postTranslate();
-  }
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setBody(event.target.value);
+  };
 
-  handleChange(event) {
-    this.setState({body: event.target.value});
-  }
-
-  async handleKeyPress(event) {
+  const handleKeyPress = async (event: KeyboardEvent<HTMLInputElement>) => {
     if(event.key === "Enter"){
-      this.postTranslate();
+      const res = await postTranslate(kind, body);
+      setConvertedBody(res.converted_body);
     }
-  }
+  };
 
-  async postTranslate() {
-    if(this.state.body === "") {
-      return;
-    } else {
-      const url = `http://34.71.216.160:3000/api/v1/keigo?kind=${this.state.kind}`;
-      const body = {
-        "body": this.state.body
-      };
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(body)
-        });
-        const data = await response.json();
-        console.log(data);
-        this.setState({convertedBody: data.converted_body});
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <TranslateBar>
-          <TranslateBarLeft>
-            <LangBox>
-              <label>
-                原文
-              </label>
-            </LangBox>
-          </TranslateBarLeft>
-          <TranslateBarRight>
-            <LangBoxRadioButton>
-              <input type="radio" name="敬語" value="1" id="teinei" defaultChecked onChange={this.handleRadioChange} />
-              <label htmlFor="teinei">丁寧</label>
-            </LangBoxRadioButton>
-            <LangBoxRadioButton>
-              <input type="radio" name="敬語" value="2" id="sonkei" onChange={this.handleRadioChange} />
-              <label htmlFor="sonkei">尊敬</label>
-            </LangBoxRadioButton>
-            <LangBoxRadioButton>
-              <input type="radio" name="敬語" value="3" id="kenjyo" onChange={this.handleRadioChange} />
-              <label htmlFor="kenjyo">謙譲</label>
-            </LangBoxRadioButton>
-          </TranslateBarRight>
-        </TranslateBar>
-        <TextBox>
-          <input type="text" placeholder="テキストを入力してください" value={this.state.body} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-        </TextBox>
-        <TextBox>
-          <input type="text" readOnly placeholder="変換結果" value={this.state.convertedBody} />
-        </TextBox>
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper>
+      <TranslateBar>
+        <TranslateBarLeft>
+          <LangBox>
+            <label>
+              原文
+            </label>
+          </LangBox>
+        </TranslateBarLeft>
+        <TranslateBarRight>
+          <LangBoxRadioButton>
+            <input type="radio" name="敬語" value="1" id="teinei" defaultChecked onChange={handleRadioChange} />
+            <label htmlFor="teinei">丁寧</label>
+          </LangBoxRadioButton>
+          <LangBoxRadioButton>
+            <input type="radio" name="敬語" value="2" id="sonkei" onChange={handleRadioChange} />
+            <label htmlFor="sonkei">尊敬</label>
+          </LangBoxRadioButton>
+          <LangBoxRadioButton>
+            <input type="radio" name="敬語" value="3" id="kenjyo" onChange={handleRadioChange} />
+            <label htmlFor="kenjyo">謙譲</label>
+          </LangBoxRadioButton>
+        </TranslateBarRight>
+      </TranslateBar>
+      <TextBox>
+        <input type="text" placeholder="テキストを入力してください" value={body} onChange={handleChange} onKeyPress={handleKeyPress} />
+      </TextBox>
+      <TextBox>
+        <input type="text" readOnly placeholder="変換結果" value={convertedBody} />
+      </TextBox>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.div`
@@ -192,3 +157,5 @@ const TextBox = styled.div`
     width: 100%;
   `}
 `;
+
+export default TranslateBox;
