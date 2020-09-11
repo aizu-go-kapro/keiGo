@@ -16,8 +16,10 @@ const KeiGoBox: React.SFC<{}> = props => {
     const kind = event.target.id as Kind;
     setKind(kind);
     console.log(kind);
-    const res = await postKeiGo(kind, body);
-    setConvertedBody(res.converted_body);
+    if (body !== "") {
+      const res = await postKeiGo(kind, body);
+      setConvertedBody(res.converted_body);
+    }
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +28,10 @@ const KeiGoBox: React.SFC<{}> = props => {
 
   const handleKeyPress = async (event: KeyboardEvent<HTMLInputElement>) => {
     if(event.key === "Enter"){
-      const res = await postKeiGo(kind, body);
-      setConvertedBody(res.converted_body);
+      if (body !== "") {
+        const res = await postKeiGo(kind, body);
+        setConvertedBody(res.converted_body);
+      }
     }
   };
 
