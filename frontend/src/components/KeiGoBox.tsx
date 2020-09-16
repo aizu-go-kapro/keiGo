@@ -26,11 +26,9 @@ const KeiGoBox: React.SFC<{}> = props => {
   };
 
   const handleKeyPress = async (event: KeyboardEvent<HTMLInputElement>) => {
-    if(event.key === "Enter"){
-      if (body !== "") {
-        const res = await postKeiGo(kind, body);
-        setConvertedBody(res.converted_body);
-      }
+    if(event.key === "Enter" && body !== "") {
+      const res = await postKeiGo(kind, body);
+      setConvertedBody(res.converted_body);
     }
   };
 
