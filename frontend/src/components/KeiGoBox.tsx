@@ -15,7 +15,6 @@ const KeiGoBox: React.SFC<{}> = props => {
   const handleRadioChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const kind = event.target.id as Kind;
     setKind(kind);
-    console.log(kind);
     if (body !== "") {
       const res = await postKeiGo(kind, body);
       setConvertedBody(res.converted_body);

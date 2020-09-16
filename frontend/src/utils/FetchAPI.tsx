@@ -18,6 +18,7 @@ export const postKeiGo = async (kind: string, originalText: string): Promise<Con
     });
     res = await response.json();
   } catch (error) {
+    // ToDo: UI上でエラーを通知できるようにする
     console.log(error);
   }
   return res;
