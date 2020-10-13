@@ -1,37 +1,37 @@
-name: Push to GCR
+# name: Push to GCR
 
-on: 
-  push:
-    branches:
-      - develop
+# on: 
+#   push:
+#     branches:
+#       - develop
 
-env:
-  SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
-  PORT: ${{ secrets.PORT }}
-  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCP_REGION: ${{ secrets.GCP_REGION }}
-  IMAGE: asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.SERVICE_NAME }}:${{ github.sha }}
+# env:
+#   SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
+#   PORT: ${{ secrets.PORT }}
+#   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+#   GCP_REGION: ${{ secrets.GCP_REGION }}
+#   IMAGE: asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.SERVICE_NAME }}:${{ github.sha }}
 
-jobs:
-  push-to-google-container-registry:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
+# jobs:
+#   push-to-google-container-registry:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout the repository
+#         uses: actions/checkout@v2
 
-      - name: Setup gcloud
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          version: 'latest'
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
+#       - name: Setup gcloud
+#         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+#         with:
+#           version: 'latest'
+#           project_id: ${{ secrets.GCP_PROJECT_ID }}
+#           service_account_key: ${{ secrets.GCP_SA_KEY }}
+#           export_default_credentials: true
 
-      - name: Configure docker to use the gcloud cli
-        run: gcloud auth configure-docker --quiet
+#       - name: Configure docker to use the gcloud cli
+#         run: gcloud auth configure-docker --quiet
 
-      - name: Build a docker image
-        run: docker build -t $IMAGE ./backend
+#       - name: Build a docker image
+#         run: docker build -t $IMAGE ./backend
 
-      - name: Push the docker image to Container Registry
-        run: docker push $IMAGE
+#       - name: Push the docker image to Container Registry
+#         run: docker push $IMAGE
