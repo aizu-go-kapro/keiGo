@@ -4,7 +4,7 @@ type ConvertedResponse = {
 
 export const postKeiGo = async (kind: string, originalText: string): Promise<ConvertedResponse> => {
   let res: ConvertedResponse;
-  const url = `http://34.71.216.160:3000/api/v1/keigo?kind=${kind}`;
+  const url = `https://keigo-s57wlqzvfq-an.a.run.app/api/v1/keigo?kind=${kind}`;
   const body = {
     "body": originalText
   };
