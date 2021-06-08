@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'backend/**'
 
 env:
   SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
